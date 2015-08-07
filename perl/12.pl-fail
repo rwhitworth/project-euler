@@ -1,0 +1,64 @@
+use strict;
+use warnings;
+use Math::Pari;
+$|++;
+
+sub factors
+{
+  my $num = shift;
+  return 0;
+}
+
+
+my $i = 0;
+my $counter = 0;
+my $sum = 0;
+
+while (1)
+{
+  $i++;
+  $sum += $i; 
+  # if (scalar(factor_number($sum)) > 500) { print "$sum\n"; last; }
+  print Math::Pari::factorint($sum) . "\n";
+  print "$i - $sum - " . scalar(factor_number($sum)) . "\n";
+}
+
+
+
+sub factor_number
+{
+	# Declare variables and get input value. -PCP
+	my	$input = $_[0];		# Input value. -PCP
+	my	$counter;		# Counter for dividing operations. -PCP
+	my	$div;			# Division result. -PCP
+	my	@factors;		# Factors array. -PCP
+
+	# A trick to force the input value to be treated as a number. -PCP
+	$input += 0;
+
+	# Make sure input is a positive integer. -PCP
+	if (($input < 1) || ($input =~ /\./))
+	{
+		return ();
+	}
+
+	# A number is always divisible by itself. -PCP
+	push (@factors, $input);
+
+	# Start counter from two, up to half the value of the input. -PCP
+	for ($counter = 2; $counter <= int($input / 2); $counter++)
+	{
+		$div = $input / $counter;
+		unless ($div =~ /\./)
+		{
+			push (@factors, $div);
+		}
+	}
+
+	# A number is always divisible by one. -PCP
+	push (@factors, 1);
+
+	# Return the array of factors. -PCP
+	return (@factors);
+}
+
