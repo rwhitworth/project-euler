@@ -31,6 +31,28 @@ namespace PE
         static public Boolean is_prime(Int64 prime)
         {
             var sq = (Int64)Math.Ceiling(Math.Sqrt(prime)) + 1;
+            if (prime == 2)
+            {
+                // yes, 2 is a prime number.
+                return true;
+            }
+            if (prime % 2 == 0)
+            {
+                // all even numbers, other than 2, are not prime
+                return false;
+            }
+            if (prime < 2)
+            {
+                // all numbers less than 2 are not prime.  Including 1.
+                return false;
+            }
+            if ((prime % 5 == 0) && (prime != 5))
+            {
+                // anything devided by 5 with a remainder of zero is not prime.
+                // at one point had a problem with returning true on numbers like 25.
+                // probably a bug in the way I'm handling the sqrt/ceil (?)
+                return false;
+            }
             for (Int64 i = 3; i < sq; i+=2)
             {
                 if (prime % i == 0)
@@ -39,6 +61,13 @@ namespace PE
                 }
             }
             return true;
+        }
+
+        static public String StringReverse(String s)
+        {
+            char[] a = s.ToCharArray();
+            Array.Reverse(a);
+            return new String(a);
         }
     }
 }
