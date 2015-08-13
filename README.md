@@ -24,6 +24,10 @@ Solved problems:<br>
 048 - perl<br>
 097 - perl<br>
 
+Utilities:<br>
+printprimes_test - C - Learning and testing the GMP interface<br>
+PrintPrimes - C# - utility to help create primes.cs used in PE.dll<br>
+
 C# code currently uses a single library that I wrote.  Perl code uses these libraries (available from CPAN): Math::Factor::XS, Math::Fibonacci, Math::Pari, and Math::Prime::XS.
 
 All code runs in less than 10 seconds.  Project Euler suggests runtimes of less than a minute.
