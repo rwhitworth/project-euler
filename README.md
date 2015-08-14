@@ -4,7 +4,7 @@ https://projecteuler.net
 Solved problems:<br>
 001 - perl<br>
 002 - perl<br>
-003 - C#<br>
+003 - C and C#<br>
 004 - perl<br>
 005 - perl<br>
 006 - perl<br>
@@ -28,6 +28,6 @@ Utilities:<br>
 printprimes_test - C - Learning and testing the GMP interface<br>
 PrintPrimes - C# - utility to help create primes.cs used in PE.dll<br>
 
-C# code currently uses a single library that I wrote.  Perl code uses these libraries (available from CPAN): Math::Factor::XS, Math::Fibonacci, Math::Pari, and Math::Prime::XS.
+C# code currently uses a single library that I wrote.  Perl code uses these libraries (available from CPAN): Math::Factor::XS, Math::Fibonacci, Math::Pari, and Math::Prime::XS.  C code uses the gmp-mini library from the GMP project.
 
 All code runs in less than 10 seconds.  Project Euler suggests runtimes of less than a minute.
