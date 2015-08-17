@@ -9,6 +9,7 @@ Solved problems:<br>
 005 - perl<br>
 006 - perl<br>
 007 - perl<br>
+008 - perl<br>
 009 - perl<br>
 010 - perl<br>
 012 - C#<br>
