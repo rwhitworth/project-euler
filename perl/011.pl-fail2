@@ -9,16 +9,21 @@ my @a = split(/\s/, $str);
 
 my $biggest = 0;
 
+
 # horizontal -
-for (my $i = 0; $i < scalar(@a) - 3; $i+=1)
+for (my $i = 0; $i < scalar(@a); $i+=1)
 {
-  if (($i > 16) and ($i < 20)) { next; }
-  if (($i > 36) and ($i < 40)) { next; }
-  if (($i > 56) and ($i < 60)) { next; }
-  if (($i > 76) and ($i < 80)) { next; }
-  if (($i > 96) and ($i < 100)) { next; }
-  if (($i > 116) and ($i < 120)) { next; }
-  if (($i > 136) and ($i < 140)) { next; }
+#  if (($i > 16) and ($i < 20)) { next; }
+#  if (($i > 36) and ($i < 40)) { next; }
+#  if (($i > 56) and ($i < 60)) { next; }
+#  if (($i > 76) and ($i < 80)) { next; }
+#  if (($i > 96) and ($i < 100)) { next; }
+#  if (($i > 116) and ($i < 120)) { next; }
+#  if (($i > 136) and ($i < 140)) { next; }
+  if (not defined $a[$i+0]) { last; }
+  if (not defined $a[$i+1]) { last; }
+  if (not defined $a[$i+2]) { last; }
+  if (not defined $a[$i+3]) { last; }
   my $num = $a[$i+0] * $a[$i+1] * $a[$i+2] * $a[$i+3];
   if ($num > $biggest)
   {
@@ -28,8 +33,9 @@ for (my $i = 0; $i < scalar(@a) - 3; $i+=1)
 }
 
 # vertical |
-for (my $i = 0; $i < scalar(@a) - 20; $i+=1)
+for (my $i = 0; $i < scalar(@a); $i++)
 {
+  if (not defined $a[$i+0]) { next; }
   if (not defined $a[$i+20]) { next; }
   if (not defined $a[$i+40]) { next; }
   if (not defined $a[$i+60]) { next; }
@@ -42,8 +48,12 @@ for (my $i = 0; $i < scalar(@a) - 20; $i+=1)
 }
 
 # diag top right to bottom left /
-for (my $i = 0; $i < scalar(@a) - 63; $i+=1)
+for (my $i = 0; $i < scalar(@a); $i++)
 {
+  if (not defined $a[$i+0]) { next; }
+  if (not defined $a[$i+21]) { next; }
+  if (not defined $a[$i+42]) { next; }
+  if (not defined $a[$i+63]) { next; }
   my $num = $a[$i+0] * $a[$i+21] * $a[$i+42] * $a[$i+63];
   if ($num > $biggest)
   {
@@ -53,9 +63,13 @@ for (my $i = 0; $i < scalar(@a) - 63; $i+=1)
 }
 
 # diag top left to bottom right \
-for (my $i = 40; $i < scalar(@a) - 3; $i+=1)
+for (my $i = 0; $i < scalar(@a); $i++)
 {
-  my $num = $a[$i-0] * $a[$i-19] * $a[$i-28] * $a[$i-37];
+  if (not defined $a[$i+0]) { next; }
+  if (not defined $a[$i-21]) { next; }
+  if (not defined $a[$i-42]) { next; }
+  if (not defined $a[$i-63]) { next; }
+  my $num = $a[$i-0] * $a[$i-21] * $a[$i-42] * $a[$i-63];
   if ($num > $biggest)
   {
     # print "$num - " . $a[$i-0] . $a[$i-19] . $a[$i-28] . $a[$i-37] . "\n";
