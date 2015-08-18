@@ -4,7 +4,7 @@ https://projecteuler.net
 Solved problems:<br>
 001 - perl<br>
 002 - perl<br>
-003 - C and C#<br>
+003 - C, C#, and perl<br>
 004 - perl<br>
 005 - perl<br>
 006 - perl<br>
