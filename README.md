@@ -12,6 +12,7 @@ Solved problems:<br>
 008 - perl<br>
 009 - perl<br>
 010 - perl<br>
+011 - C#<br>
 012 - C#<br>
 013 - perl<br>
 014 - perl<br>
