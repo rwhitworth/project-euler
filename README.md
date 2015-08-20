@@ -2,8 +2,8 @@
 https://projecteuler.net
 
 Solved problems:<br>
-001 - perl<br>
-002 - perl<br>
+001 - C# and perl<br>
+002 - C# and perl<br>
 003 - C, C#, and perl<br>
 004 - perl<br>
 005 - perl<br>
@@ -11,21 +11,21 @@ Solved problems:<br>
 007 - perl<br>
 008 - perl<br>
 009 - perl<br>
-010 - perl<br>
+010 - C# and perl<br>
 011 - C#<br>
 012 - C#<br>
-013 - perl<br>
-014 - perl<br>
+013 - C# and perl<br>
+014 - C# and perl<br>
 015 - C<br>
-016 - perl<br>
+016 - C# and perl<br>
 020 - C# and perl<br>
 021 - C# and perl<br>
-025 - perl<br>
+025 - C# and perl<br>
 030 - perl<br>
 034 - C#<br>
 035 - perl<br>
 037 - C#<br>
-048 - perl<br>
+048 - C# and perl<br>
 097 - perl<br>
 
 Utilities:<br>
