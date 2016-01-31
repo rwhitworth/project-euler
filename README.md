@@ -28,6 +28,7 @@ Solved problems:<br>
 035 - perl<br>
 037 - C#<br>
 048 - C# and perl<br>
+067 - C#<br>
 097 - perl<br>
 
 Utilities:<br>
