@@ -8,7 +8,7 @@ namespace PE
 {
     public class Utilities
     {
-        public static BigInteger sqrt(BigInteger n)
+        static public BigInteger sqrt(BigInteger n)
         {
             // calibrate 'guess' parameter based on input
             // multiple test runs with items 3 digits in length to hundreds of digits in length
@@ -40,7 +40,7 @@ namespace PE
 
             return temp;
         }
-        public static BigInteger sqrt(BigInteger n, BigInteger guess)
+        static public BigInteger sqrt(BigInteger n, BigInteger guess)
         {
             // Newton's Method
             // https://en.wikipedia.org/wiki/Newton%27s_method#Square_root_of_a_number
@@ -155,6 +155,19 @@ namespace PE
             char[] a = s.ToCharArray();
             Array.Reverse(a);
             return new String(a);
+        }
+        static public Int64 StringNameScore(String s)
+        {
+            // StringNameScore
+            // Problem 22
+            // StringNameScore("COLIN") == 53
+            Int64 total = 0;
+            s = s.ToUpper();
+            for (int i = 0; i < s.Length; i++)
+            {
+                total += s[i] - 64; // A = 1 = 65 - 64, B = 2 = 66 - 64, etc 
+            }
+            return total;
         }
     }
 }

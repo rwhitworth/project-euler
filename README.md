@@ -23,6 +23,7 @@ Solved problems:<br>
 019 - C#<br>
 020 - C# and perl<br>
 021 - C# and perl<br>
+022 - C#<br>
 025 - C# and perl<br>
 030 - perl<br>
 034 - C#<br>
