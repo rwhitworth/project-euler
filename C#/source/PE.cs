@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace PE
                 res = sqrt(n, temp);
                 if (res == temp)
                 {
-                    Console.WriteLine("Break! {0}", i);
+                    // Console.WriteLine("Break! {0}", i);
                     break;
                 }
                 temp = res;
@@ -44,6 +45,9 @@ namespace PE
         {
             // Newton's Method
             // https://en.wikipedia.org/wiki/Newton%27s_method#Square_root_of_a_number
+
+            if (guess < 1)
+                return n;
 
             BigInteger top = (guess * guess) - n;
             BigInteger bottom = 2 * guess;
@@ -168,6 +172,136 @@ namespace PE
                 total += s[i] - 64; // A = 1 = 65 - 64, B = 2 = 66 - 64, etc 
             }
             return total;
+        }
+        public static Int64[] ProperDivisors(Int64 num)
+        {
+            // Problem 21
+            // ProperDivisors(220) == 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110
+            // ProperDivisors(284) == 1, 2, 4, 71, 142
+            System.Collections.ArrayList a = new ArrayList();
+
+            a.Add(Int64.Parse("1"));
+            for (Int64 k = 2; k < ((num / 2) + 1); k++)
+            {
+                if (num % k == 0)
+                {
+                    a.Add(k);
+                }
+
+            }
+
+            Int64[] result = new Int64[a.Count];
+            for (int i = 0; i < a.Count; i++)
+            {
+                result[i] = (Int64)a[i];
+            }
+            return result;
+        }
+        public static BigInteger[] ProperDivisors(BigInteger num)
+        {
+            // Problem 21
+            // ProperDivisors(220) == 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110
+            // ProperDivisors(284) == 1, 2, 4, 71, 142
+            System.Collections.ArrayList a = new ArrayList();
+
+            a.Add(BigInteger.Parse("1"));
+            for (BigInteger k = 2; k < ((num / 2) + 1); k++)
+            {
+                if (num % k == 0)
+                {
+                    a.Add(k);
+                }
+
+            }
+
+            BigInteger[] result = new BigInteger[a.Count];
+            for (int i = 0; i < a.Count; i++)
+            {
+                result[i] = (BigInteger)a[i];
+            }
+            return result;
+        }
+        public static bool sum_abundant(BigInteger num)
+        {
+            var a = ProperDivisors(num);
+            BigInteger total = 0;
+            foreach (var item in a)
+            {
+                total += item;
+            }
+            if (total > num)
+                return true;
+            return false;
+        }
+        public static bool PerfectNumber(BigInteger num)
+        {
+            var a = ProperDivisors(num);
+            BigInteger total = 0;
+            foreach (var item in a)
+            {
+                total += item;
+            }
+            if (total == num)
+                return true;
+            return false;
+        }
+
+        public static bool isNivenNumber(BigInteger num, String nivenString = "")
+        {
+            // Hashad Number, aka Niven Number
+            // #387
+            if (nivenString.Length == 0)
+            {
+                nivenString = num.ToString();
+            }
+            BigInteger counter = 0;
+            if (num <= 0)
+            {
+                return false;
+            }
+            foreach (var item in nivenString)
+            {
+                counter += int.Parse(item.ToString());
+            }
+            if (num % counter == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool isRightTruncatableNivemNumber(BigInteger num)
+        {
+            // TODO: Is this function working?  Need more test cases to prove it works.
+            // #387
+            String nivenString = num.ToString();
+            String new_string = nivenString.Substring(0, nivenString.Length - 1);
+            BigInteger new_num = BigInteger.Parse(new_string);
+            if (num <= 0)
+            {
+                return false;
+            }
+            while (new_string.Length > 1)
+            {
+                if (!isNivenNumber(BigInteger.Parse(new_string), new_string))
+                {
+                    return false;
+                }
+                new_string = new_string.Substring(0, new_string.Length - 1);
+            }
+            return true;
+        }
+        public static BigInteger sumDigits(String num)
+        {
+            BigInteger total = 0;
+            for (int i = 0; i < num.Length; i++)
+            {
+                total += BigInteger.Parse(num[i].ToString());
+            }
+            return total;
+        }
+        public static BigInteger sumDigits(BigInteger num)
+        {
+            return sumDigits(num.ToString());
         }
     }
 }
