@@ -32,6 +32,7 @@ Solved problems:<br>
 048 - C# and perl<br>
 067 - C#<br>
 097 - perl<br>
+387 - C# (takes much longer than a minute to run)<br>
 
 Utilities:<br>
 printprimes_test - C - Learning and testing the GMP interface<br>
