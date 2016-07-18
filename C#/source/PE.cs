@@ -9,8 +9,13 @@ namespace PE
 {
     public class Utilities
     {
+        static private Dictionary<BigInteger, BigInteger> sqrt_dic = new Dictionary<BigInteger, BigInteger>();
         static public BigInteger sqrt(BigInteger n)
         {
+            BigInteger lookup;
+            if (sqrt_dic.TryGetValue(n, out lookup))
+                return lookup;
+
             // calibrate 'guess' parameter based on input
             // multiple test runs with items 3 digits in length to hundreds of digits in length
             // shows 50 to be the correct magic number for all input values
@@ -39,6 +44,7 @@ namespace PE
                 }
             }
 
+            sqrt_dic[n] = temp;
             return temp;
         }
         static public BigInteger sqrt(BigInteger n, BigInteger guess)
@@ -120,22 +126,31 @@ namespace PE
             }
             return true;
         }
+
+        static private Dictionary<BigInteger, bool> prime_dic = new Dictionary<BigInteger, bool>();
         static public Boolean is_prime(BigInteger prime)
         {
+            bool lookup;
+            if (prime_dic.TryGetValue(prime, out lookup))
+                return lookup;
+
             var sq = sqrt(prime) + 1;
             if (prime == 2)
             {
                 // yes, 2 is a prime number.
+                prime_dic[prime] = true;
                 return true;
             }
             if (prime % 2 == 0)
             {
                 // all even numbers, other than 2, are not prime
+                prime_dic[prime] = false;
                 return false;
             }
             if (prime < 2)
             {
                 // all numbers less than 2 are not prime.  Including 1.
+                prime_dic[prime] = false;
                 return false;
             }
             if ((prime % 5 == 0) && (prime != 5))
@@ -143,15 +158,18 @@ namespace PE
                 // anything devided by 5 with a remainder of zero is not prime.
                 // at one point had a problem with returning true on numbers like 25.
                 // probably a bug in the way I'm handling the sqrt/ceil (?)
+                prime_dic[prime] = false;
                 return false;
             }
             for (BigInteger i = 3; i < sq; i += 2)
             {
                 if (prime % i == 0)
                 {
+                    prime_dic[prime] = false;
                     return false;
                 }
             }
+            prime_dic[prime] = true;
             return true;
         }
         static public String StringReverse(String s)
@@ -246,8 +264,13 @@ namespace PE
             return false;
         }
 
+        static private Dictionary<BigInteger, bool> NN_dic = new Dictionary<BigInteger, bool>();
         public static bool isNivenNumber(BigInteger num, String nivenString = "")
         {
+            bool lookup;
+            if (NN_dic.TryGetValue(num, out lookup))
+                return lookup;
+
             // Hashad Number, aka Niven Number
             // #387
             if (nivenString.Length == 0)
@@ -257,6 +280,7 @@ namespace PE
             BigInteger counter = 0;
             if (num <= 0)
             {
+                NN_dic[num] = false;
                 return false;
             }
             foreach (var item in nivenString)
@@ -265,38 +289,56 @@ namespace PE
             }
             if (num % counter == 0)
             {
+                NN_dic[num] = true;
                 return true;
             }
+            NN_dic[num] = false;
             return false;
         }
+
+        static private Dictionary<BigInteger, bool> RTNN_dic = new Dictionary<BigInteger, bool>();
         public static bool isRightTruncatableNivemNumber(BigInteger num)
         {
             // TODO: Is this function working?  Need more test cases to prove it works.
             // #387
+            bool lookup;
+            if (RTNN_dic.TryGetValue(num, out lookup))
+                return lookup;
+
             String nivenString = num.ToString();
             String new_string = nivenString.Substring(0, nivenString.Length - 1);
             BigInteger new_num = BigInteger.Parse(new_string);
             if (num <= 0)
             {
+                RTNN_dic[num] = false;
                 return false;
             }
             while (new_string.Length > 1)
             {
                 if (!isNivenNumber(BigInteger.Parse(new_string), new_string))
                 {
+                    RTNN_dic[num] = false;
                     return false;
                 }
                 new_string = new_string.Substring(0, new_string.Length - 1);
             }
+            RTNN_dic[num] = true;
             return true;
         }
+
+        static private Dictionary<String, BigInteger> SD_dic = new Dictionary<string, BigInteger>();
         public static BigInteger sumDigits(String num)
         {
+            BigInteger lookup;
+            if (SD_dic.TryGetValue(num, out lookup))
+                return lookup;
+
             BigInteger total = 0;
             for (int i = 0; i < num.Length; i++)
             {
                 total += BigInteger.Parse(num[i].ToString());
             }
+            SD_dic[num] = total;
             return total;
         }
         public static BigInteger sumDigits(BigInteger num)
