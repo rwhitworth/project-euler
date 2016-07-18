@@ -295,6 +295,29 @@ namespace PE
             NN_dic[num] = false;
             return false;
         }
+        public static bool isNivenNumber(Int64 num, String nivenString = "")
+        {
+            // Hashad Number, aka Niven Number
+            // #387
+            if (nivenString.Length == 0)
+            {
+                nivenString = num.ToString();
+            }
+            Int64 counter = 0;
+            if (num <= 0)
+            {
+                return false;
+            }
+            foreach (var item in nivenString)
+            {
+                counter += int.Parse(item.ToString());
+            }
+            if (num % counter == 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         static private Dictionary<BigInteger, bool> RTNN_dic = new Dictionary<BigInteger, bool>();
         public static bool isRightTruncatableNivemNumber(BigInteger num)
@@ -323,6 +346,27 @@ namespace PE
                 new_string = new_string.Substring(0, new_string.Length - 1);
             }
             RTNN_dic[num] = true;
+            return true;
+        }
+        public static bool isRightTruncatableNivemNumber(Int64 num)
+        {
+            // TODO: Is this function working?  Need more test cases to prove it works.
+            // #387
+            String nivenString = num.ToString();
+            String new_string = nivenString.Substring(0, nivenString.Length - 1);
+            Int64 new_num = BigInteger.Parse(new_string);
+            if (num <= 0)
+            {
+                return false;
+            }
+            while (new_string.Length > 1)
+            {
+                if (!isNivenNumber(BigInteger.Parse(new_string), new_string))
+                {
+                    return false;
+                }
+                new_string = new_string.Substring(0, new_string.Length - 1);
+            }
             return true;
         }
 
