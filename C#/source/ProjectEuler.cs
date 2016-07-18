@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
-using System.Text;
 
 namespace ProjectEuler
 {
@@ -42,6 +39,51 @@ namespace ProjectEuler
                 b = c + b;
             }
             return a;
+        }
+
+        public static BigInt sqrt(BigInt n)
+        {
+            // calibrate 'guess' parameter based on input
+            // multiple test runs with items 3 digits in length to hundreds of digits in length
+            // shows 50 to be the correct magic number for all input values
+            Int64 len = n.ToString().Length;
+            BigInt guess = 0;
+            guess = 50 * (n.ToString().Length / 2);
+
+            BigInt temp = guess;
+            BigInt res = 0;
+
+            // stop attempting to correct the guess by 5000 runs...
+            // a 2000 digit number takes roughly 3300 iterations.
+            // so 4999 should be enough.. right?
+            for (int i = 0; i < 5000; i++)
+            {
+                res = sqrt(n, temp);
+                if (res == temp)
+                {
+                    // Console.WriteLine("Break! {0}", i);
+                    break;
+                }
+                temp = res;
+                if (i >= 4999)
+                {
+                    throw new Exception("sqrt() ran almost 5000 iterations without calibrating... failing.");
+                }
+            }
+
+            return temp;
+        }
+        public static BigInt sqrt(BigInt n, BigInt guess)
+        {
+            // Newton's Method
+            // https://en.wikipedia.org/wiki/Newton%27s_method#Square_root_of_a_number
+            if (guess <= 0)
+            {
+                return 0;
+            }
+            BigInt top = (guess * guess) - n;
+            BigInt bottom = 2 * guess;
+            return guess - (top / bottom);
         }
 
         public static Int64 PrimeNum(int num)
@@ -86,6 +128,17 @@ namespace ProjectEuler
             sqrt = System.Math.Ceiling(sqrt);
             Int64 sqrt64 = Int64.Parse(sqrt.ToString());
             for (Int64 i = 3; i <= sqrt64; i+=2)
+            {
+                if (num % i == 0) { return false; }
+            }
+            return true;
+        }
+        public static bool isPrime(BigInt num)
+        {
+            if (num == 2) { return true; }
+            if (num == 3) { return true; }
+            Int64 sq_root = Int64.Parse(sqrt(num).ToString()) + 1;
+            for (Int64 i = 3; i <= sq_root; i += 2)
             {
                 if (num % i == 0) { return false; }
             }
@@ -223,6 +276,68 @@ namespace ProjectEuler
                 result += a[i];
             }
             return result;
+        }
+        public static bool isNivenNumber(BigInt num)
+        {
+            // Hashad Number, aka Niven Number
+            String nivenString = num.ToString();
+            BigInt counter = 0;
+            if (num <= 0)
+            {
+                return false;
+            }
+            foreach (var item in nivenString)
+            {
+                counter += int.Parse(item.ToString());
+            }
+            if (num % counter == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool isRightTruncatableNivemNumber(BigInt num)
+        {
+            // TODO: Is this function working?  Need more test cases to prove it works.
+            // #387
+            String nivenString = num.ToString();
+            String new_string = nivenString.Substring(0, nivenString.Length - 1);
+            BigInt new_num = BigInt.Parse(new_string);
+            if (num <= 0)
+            {
+                return false;
+            }
+            while(new_string.Length > 1)
+            {
+                if (!isNivenNumber(BigInt.Parse(new_string)))
+                {
+                    return false;
+                }
+                new_string = new_string.Substring(0, new_string.Length - 1);
+            }
+            return true;
+        }
+        public static bool isStrongNivenNumber(BigInt num)
+        {
+            // TODO: Is this function working?  Need more test cases to prove it works.
+            // #387
+            BigInt nivenDivisor = 0;
+            String nivenString = num.ToString();
+            BigInt counter = 0;
+            if (num <= 0 || !isNivenNumber(num))
+            {
+                return false;
+            }
+            foreach (var item in nivenString)
+            {
+                counter += int.Parse(item.ToString());
+            }
+            nivenDivisor = num / counter;
+            if (isPrime(nivenDivisor))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
