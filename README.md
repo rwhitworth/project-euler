@@ -26,6 +26,7 @@ Solved problems:<br>
 022 - C#<br>
 024 - ruby<br>
 025 - C# and perl<br>
+028 - C#<br>
 030 - perl<br>
 034 - C#<br>
 035 - perl<br>
