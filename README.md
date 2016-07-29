@@ -34,6 +34,7 @@ Solved problems:<br>
 048 - C# and perl<br>
 067 - C#<br>
 097 - perl<br>
+145 - C# (takes < 3 minutes)<br>
 387 - C# (takes much longer than a minute to run)<br>
 
 Utilities:<br>
