@@ -32,6 +32,7 @@ Solved problems:<br>
 035 - perl<br>
 037 - C#<br>
 048 - C# and perl<br>
+065 - ruby<br>
 067 - C#<br>
 092 - ruby (takes a bit less than 20 minutes to run)<br>
 097 - perl<br>
