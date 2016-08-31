@@ -34,6 +34,7 @@ Solved problems:<br>
 048 - C# and perl<br>
 065 - ruby<br>
 067 - C#<br>
+079 - solved with pen and paper<br>
 089 - ruby<br>
 092 - ruby (takes a bit less than 20 minutes to run)<br>
 097 - perl<br>
