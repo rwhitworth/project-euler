@@ -34,6 +34,7 @@ Solved problems:<br>
 048 - C# and perl<br>
 065 - ruby<br>
 067 - C#<br>
+089 - ruby<br>
 092 - ruby (takes a bit less than 20 minutes to run)<br>
 097 - perl<br>
 145 - C# (takes < 3 minutes)<br>
@@ -48,6 +49,8 @@ C# code comes in two flavors.  1st being the PE library that uses the BigInteger
 Perl code uses these libraries (available from CPAN): Math::Factor::XS, Math::Fibonacci, Math::Pari, and Math::Prime::XS.  
 
 C code uses the gmp-mini library from the GMP project.
+
+Ruby code uses these libraries (available from RubyGems.org): roman-numerals.
 
 
 All code runs in less than 10 seconds.  Project Euler suggests runtimes of less than a minute.
