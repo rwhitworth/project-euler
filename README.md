@@ -28,6 +28,7 @@ Solved problems:<br>
 025 - C# and perl<br>
 028 - C#<br>
 030 - perl<br>
+032 - ruby<br>
 034 - C#<br>
 035 - perl<br>
 037 - C#<br>
