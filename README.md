@@ -5,12 +5,12 @@ Solved problems:<br>
 001 - C# and perl<br>
 002 - C# and perl<br>
 003 - C, C#, and perl<br>
-004 - perl<br>
-005 - perl<br>
-006 - perl<br>
-007 - perl<br>
-008 - perl<br>
-009 - perl<br>
+004 - C#, perl<br>
+005 - C#, perl<br>
+006 - C#, perl<br>
+007 - C#, perl<br>
+008 - C#, perl<br>
+009 - C#, perl<br>
 010 - C# and perl<br>
 011 - C#<br>
 012 - C#<br>
@@ -40,7 +40,7 @@ Solved problems:<br>
 079 - solved with pen and paper<br>
 089 - ruby<br>
 092 - ruby (takes a bit less than 20 minutes to run)<br>
-097 - perl<br>
+097 - C#, perl<br>
 145 - C# (takes < 3 minutes)<br>
 387 - C# (takes much longer than a minute to run)<br>
 
